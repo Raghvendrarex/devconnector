@@ -5,7 +5,10 @@ const app = express();
 
 connectDB();
 
-app.get("/",(req,res) => res.send("API running!"));
+//init middleware
+app.use(express.json({ extended:false }));
+
+app.post("/",(req,res) => res.send("API running!"));
 
 app.use("/api/users",require("./routes/api/users"));
 app.use("/api/auth",require("./routes/api/auth"));
